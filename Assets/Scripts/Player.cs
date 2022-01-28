@@ -3,7 +3,7 @@
 public class Player : MonoBehaviour
 {
     public float multiplier;
-    [SerializeField] private Ball _ball;
+    [SerializeField] private BallShooter _ball;
     private Vector3 _startPosition;
 
     private void Awake()

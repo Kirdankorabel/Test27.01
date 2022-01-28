@@ -5,16 +5,16 @@ public class GameController : MonoBehaviour
     private static GameController _singltone;
     public static GameController Singletone => _singltone;
 
-    [SerializeField] private Ball _ballPrefab;
+    [SerializeField] private BallShooter _ballPrefab;
     [SerializeField] private Defender _defender;
     [SerializeField] private TargetController _targetController;
 
-    private Ball _ball;
+    private BallShooter _ball;
     private int _level;
     private Vector3 _defenderStartPosition;
 
     public int Level => _level;
-    public Ball Ball => _ball;
+    public BallShooter Ball => _ball;
     public Vector3 BallPosition => _ball.transform.position;
 
     private void Awake()
