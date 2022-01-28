@@ -1,34 +1,39 @@
 ﻿using UnityEngine;
 
-public class UIController : MonoBehaviour
+namespace UIScripts
 {
-    private static UIController _singltone;
-    public static UIController Singletone => _singltone;
-
-    [SerializeField] private GameUI _gameUI;
-    [SerializeField] private MenuUI _menuUI;
-
-    private void Awake()
+    public class UIController : MonoBehaviour
     {
-        _singltone = this;
-    }
+        private static UIController _singltone;
+        public static UIController Singletone => _singltone;
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-            ToMenu();
-    }
+        [SerializeField] private GameUI _gameUI;
+        [SerializeField] private MenuUI _menuUI;
 
-    public void UpdateGamePanel()
-        => _gameUI.UpdatePanel(GameController.Singletone.Level);
+        private void Awake()
+            => _singltone = this;
 
-    public void ToPlay()
-    {
-        _gameUI.gameObject.SetActive(true);
-        _menuUI.gameObject.SetActive(false);
-    }
-    public void ToMenu()
-    {
-        _menuUI.gameObject.SetActive(true);
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+                ToMenu();
+        }
+
+        public void UpdateGamePanel()
+            => _gameUI.UpdatePanel(GameController.Singletone.Level);
+
+        public void ToPlay()
+        {
+            GameController.Singletone.EnableTouchTracker();
+            _gameUI.gameObject.SetActive(true);
+            _menuUI.gameObject.SetActive(false);
+            Time.timeScale = 1;
+        }
+
+        public void ToMenu()
+        {
+            GameController.Singletone.DisableTouchTracker();
+            _menuUI.gameObject.SetActive(true);
+        }
     }
 }

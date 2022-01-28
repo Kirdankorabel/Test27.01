@@ -1,13 +1,17 @@
 ﻿using UnityEngine;
+using UIScripts;
+using PlayingField;
+using PlayerScripts;
 
 public class GameController : MonoBehaviour
-{//пространства имен
+{
     private static GameController _singltone;
     public static GameController Singletone => _singltone;
 
     [SerializeField] private BallShooter _ballPrefab;
     [SerializeField] private Defender _defender;
     [SerializeField] private TargetController _targetController;
+    [SerializeField] private TouchTracker _touchTracker;
 
     private BallShooter _ball;
     private int _level;
@@ -21,7 +25,7 @@ public class GameController : MonoBehaviour
     {
         _level = 0;
         _singltone = this;
-        _defenderStartPosition = _defender.transform.position;        
+        _defenderStartPosition = _defender.transform.position;
     }
 
     private void Start()
@@ -30,6 +34,20 @@ public class GameController : MonoBehaviour
         StartNewLevel();
     }
 
+    public void InstantiateNewBall()
+    {
+        if (_ball != null)
+            Destroy(_ball.gameObject);
+        _ball = Instantiate(_ballPrefab);
+        _defender.transform.position = _defenderStartPosition;
+    }
+
+    public void EnableTouchTracker()
+        => _touchTracker.enabled = true;
+
+    public void DisableTouchTracker()
+        => _touchTracker.enabled = false;
+
     private void StartNewLevel()
     {
         _level++; 
@@ -37,13 +55,5 @@ public class GameController : MonoBehaviour
         InstantiateNewBall();
         _defender.UpdateSpeed();
         UIController.Singletone.UpdateGamePanel();
-    }
-
-    public void InstantiateNewBall()
-    {
-        if(_ball != null)
-            Destroy(_ball.gameObject);
-        _ball = Instantiate(_ballPrefab);
-        _defender.transform.position = _defenderStartPosition;
     }
 }

@@ -64,17 +64,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\BallCollisionController.cs" />
-    <Compile Include="Assets\Scripts\BallDestroyer.cs" />
-    <Compile Include="Assets\Scripts\BallShooter.cs" />
-    <Compile Include="Assets\Scripts\Defender.cs" />
+    <Compile Include="Assets\Scripts\FieldScripts\BallCollisionController.cs" />
+    <Compile Include="Assets\Scripts\FieldScripts\BallDestroyer.cs" />
+    <Compile Include="Assets\Scripts\FieldScripts\Defender.cs" />
+    <Compile Include="Assets\Scripts\FieldScripts\Target.cs" />
+    <Compile Include="Assets\Scripts\FieldScripts\TargetController.cs" />
     <Compile Include="Assets\Scripts\GameController.cs" />
-    <Compile Include="Assets\Scripts\Player.cs" />
-    <Compile Include="Assets\Scripts\Target.cs" />
-    <Compile Include="Assets\Scripts\TargetController.cs" />
-    <Compile Include="Assets\Scripts\TouchTracker.cs" />
+    <Compile Include="Assets\Scripts\PlayerScripts\BallShooter.cs" />
+    <Compile Include="Assets\Scripts\PlayerScripts\Player.cs" />
+    <Compile Include="Assets\Scripts\PlayerScripts\TouchTracker.cs" />
     <Compile Include="Assets\Scripts\UIScripts\GameUI.cs" />
     <Compile Include="Assets\Scripts\UIScripts\MenuUI.cs" />
+    <Compile Include="Assets\Scripts\UIScripts\ScreenController.cs" />
     <Compile Include="Assets\Scripts\UIScripts\UIController.cs" />
     <Reference Include="UnityEngine.Purchasing">
       <HintPath>D:/Git/TestKiev/Library/ScriptAssemblies/UnityEngine.Purchasing.dll</HintPath>

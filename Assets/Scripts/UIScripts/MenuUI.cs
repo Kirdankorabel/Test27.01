@@ -1,15 +1,20 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class MenuUI : MonoBehaviour
+namespace UIScripts
 {
-    public string gameButtonText = "Продолжить";
-    [SerializeField] private Text _gameButtonText;
-    [SerializeField] private Button _gameButton;
-    [SerializeField] private Button _exitButton;
-
-    private void Start()
+    public class MenuUI : MonoBehaviour
     {
-        _gameButton.onClick.AddListener(UIController.Singletone.ToPlay);
+        [SerializeField] private string gameButtonText = "Продолжить";
+        [SerializeField] private Text _gameButtonText;
+        [SerializeField] private Button _gameButton;
+        [SerializeField] private Button _exitButton;
+
+        private void Start()
+        {
+            _gameButton.onClick.AddListener(UIController.Singletone.ToPlay);
+            _gameButton.onClick.AddListener(() => _gameButtonText.text = gameButtonText);
+            _exitButton.onClick.AddListener(Application.Quit);
+        }
     }
 }
